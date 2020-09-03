@@ -1,8 +1,6 @@
 build {
   sources = [
-    "source.virtualbox-iso.focal-live",
     "source.virtualbox-iso.bionic-live",
-    "source.virtualbox-iso.focal-legacy",
     "source.virtualbox-iso.bionic-legacy"
   ]
 
