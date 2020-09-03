@@ -1,11 +1,15 @@
-# Cache objects
+# Packer cache
 packer_cache/
 
 # Crash log
 crash.log
 
-# For built boxes
+# Vagrant boxes
 *.box
 
-# Other
+# Binary files
 *.iso
+*.iso.lock
+*.vmdk
+*.vdi
+*.ovf

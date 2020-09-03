@@ -1,0 +1,25 @@
+#cloud-config
+autoinstall:
+  version: 1
+  early-commands:
+    - systemctl stop ssh
+  refresh-installer:
+    update: true
+  ssh:
+    install-server: true
+    allow-pw: true
+  storage:
+    layout:
+      name: direct
+    swap:
+      size: 0
+  user-data:
+    locale: en_US
+    timezone: Europe/Oslo
+    users:
+      - name: packer
+        passwd: $6$packer$boWUDPn2ItbIVp75vZkcB9enktYcH/yND03ZqeO.xN1ydPY2A8ZRsbTDbbiRlToGQ97O4.AM3Tdw9FQoPk41k.
+        groups: ["adm", "cdrom", "sudo"]
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+        lock-passwd: false
