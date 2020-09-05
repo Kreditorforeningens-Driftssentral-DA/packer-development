@@ -1,5 +1,8 @@
 # INFO
 
+* https://www.packer.io/guides/automatic-operating-system-installs/autounattend_windows
+
+EFI-installation requires Autounattend.xml mounted as iso (sata); floppy is not available
 
 #### ISOs
 
