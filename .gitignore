@@ -7,9 +7,15 @@ crash.log
 # Vagrant boxes
 *.box
 
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
 # Binary files
 *.iso
 *.iso.lock
 *.vmdk
 *.vdi
 *.ovf
+*.ova

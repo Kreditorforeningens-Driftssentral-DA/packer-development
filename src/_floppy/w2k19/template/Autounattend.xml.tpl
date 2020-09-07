@@ -7,7 +7,7 @@
       <SetupUILanguage>
         <UILanguage>en-US</UILanguage>
       </SetupUILanguage>
-      <InputLocale>nb-NO</InputLocale>
+      <InputLocale>${input_locale}</InputLocale>
       <SystemLocale>en-US</SystemLocale>
       <UILanguage>en-US</UILanguage>
       <UILanguageFallback>en-US</UILanguageFallback>
@@ -57,7 +57,7 @@
             <!-- Get-WindowsImage -ImagePath D:\sources\install.wim -->
             <MetaData wcm:action="add">
             <Key>/IMAGE/INDEX</Key>
-            <Value>1</Value>
+            <Value>${image_index}</Value>
             </MetaData>
           </InstallFrom>
           <InstallTo>
@@ -94,26 +94,26 @@
       <!-- https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup -->
       <UserAccounts>
         <AdministratorPassword>
-          <Value>packer</Value>
+          <Value>${admin_password}</Value>
           <PlainText>true</PlainText>
         </AdministratorPassword>
         <LocalAccounts>
           <LocalAccount wcm:action="add">
             <Password>
-              <Value>vagrant</Value>
+              <Value>${local_password}</Value>
               <PlainText>true</PlainText>
             </Password>
-            <Description>Local vagrant Account</Description>
-            <DisplayName>vagrant</DisplayName>
+            <Description>Local ${local_username} Account</Description>
+            <DisplayName>${local_username}</DisplayName>
             <Group>administrators</Group>
-            <Name>vagrant</Name>
+            <Name>${local_username}</Name>
           </LocalAccount>
         </LocalAccounts>
       </UserAccounts>
       <AutoLogon>
         <Username>Administrator</Username>
         <Password>
-          <Value>packer</Value>
+          <Value>${admin_password}</Value>
           <PlainText>true</PlainText>
         </Password>
         <Enabled>true</Enabled>
@@ -161,9 +161,9 @@
           <Description>Switch from EVAL to VL</Description>
         </SynchronousCommand>
         <SynchronousCommand wcm:action="add">
-            <CommandLine>cmd.exe /c wmic useraccount where "name='vagrant'" set PasswordExpires=FALSE</CommandLine>
+            <CommandLine>cmd.exe /c wmic useraccount where "name='${local_username}'" set PasswordExpires=FALSE</CommandLine>
             <Order>8</Order>
-            <Description>Disable password expiration for vagrant user</Description>
+            <Description>Disable password expiration for ${local_username} user</Description>
         </SynchronousCommand>
       </FirstLogonCommands>
       <OOBE>
@@ -181,7 +181,7 @@
   <settings pass="specialize">
     <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <!-- https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-international-core -->
-      <InputLocale>nb-NO</InputLocale>
+      <InputLocale>${input_locale}</InputLocale>
       <SystemLocale>en-US</SystemLocale>
       <UILanguage>en-US</UILanguage>
       <UILanguageFallback>en-US</UILanguageFallback>
@@ -189,8 +189,8 @@
     </component>
     <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <!-- https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup -->
-      <ComputerName>w2k19core</ComputerName>
-      <TimeZone>W. Europe Standard Time</TimeZone>
+      <ComputerName>${computername}</ComputerName>
+      <TimeZone>${timezone}</TimeZone>
     </component>
     <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-ServerManager-SvrMgrNc" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <!-- https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-servermanager-svrmgrnc -->

@@ -48,6 +48,15 @@ source "virtualbox-iso" "focal-bios" {
   ssh_pty                = true
   ssh_handshake_attempts = 30
   ssh_timeout            = "10m"
+
+  # EXPORT OPTIONS
+  export_opts = [
+    "--manifest",
+    "--vsys", "0",
+    "--description", "ubuntu-base-image",
+    "--version", "v0.0.1"
+  ]
+  format = "ova"
 }
 
 # ===================================================================
