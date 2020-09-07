@@ -1,14 +1,14 @@
-# Packer cache
+# Packer
 packer_cache/
 
-# Crash log
-crash.log
+# Vagrant
+*.vagrant/
 
-# Vagrant boxes
 *.box
 
 # Terraform
 .terraform/
+
 *.tfstate
 *.tfstate.backup
 
@@ -19,3 +19,6 @@ crash.log
 *.vdi
 *.ovf
 *.ova
+
+# Logfiles
+*.log

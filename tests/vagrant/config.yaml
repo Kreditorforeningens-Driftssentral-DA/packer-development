@@ -1,0 +1,6 @@
+# Configuration is imported to Vagrantfile (vagrant_config)
+---
+root_folder: "../../output/vagrant"
+ssh_username: packer
+ssh_password: packer
+...

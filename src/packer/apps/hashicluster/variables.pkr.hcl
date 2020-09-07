@@ -1,13 +1,13 @@
 locals {
   # Variables passed to virtualbox builder
   virtualbox = {
-    os_type     = "Ubuntu_64" #var.os_definition[virtualbox]
-    admin_user  = var.admin_password
-    admin_pass  = var.admin_password
-    vm_name     = var.vm_name
-    disk_size   = var.disk_size
-    cpus        = var.num_cpu
-    memory      = var.mb_memory
+    #os_type     = "Ubuntu_64" #var.os_definition[virtualbox]
+    #admin_user  = var.admin_password
+    #admin_pass  = var.admin_password
+    #vm_name     = var.vm_name
+    #disk_size   = var.disk_size
+    #cpus        = var.num_cpu
+    #memory      = var.mb_memory
   }
 }
 

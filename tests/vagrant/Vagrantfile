@@ -1,0 +1,12 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require 'yaml'
+current_dir    = File.dirname(File.expand_path(__FILE__))
+vagrant_config = YAML.load_file("#{current_dir}/config.yaml")
+
+Vagrant.configure("2") do |config|
+  config.vm.box       = "#{vagrant_config['root_folder']}/virtualbox-hashicluster.box"
+  config.ssh.username = vagrant_config['ssh_username']
+  config.ssh.password = vagrant_config['ssh_password']
+end

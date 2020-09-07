@@ -1,19 +1,9 @@
-terraform {
-  required_version = "~> 0.13"
-
-  required_providers {
-    local = {
-      source  = "hashicorp/local"
-      version = "~> 1.4"
-    }
-  }
-}
-
 # Description:
-#   Create autounattend.xml from template
+#   Create Autounattend.xml from template
+# -- "./src/_floppy/w2k19/core/Autounattend.xml"
 resource "local_file" "autounattend_core" {
-    filename = "./src/_floppy/w2k19/core/Autounattend.xml"
-    content  = templatefile("./src/_floppy/w2k19/template/Autounattend.xml.tpl",
+    filename = local.core.rendered_file
+    content  = templatefile(local.core.template,
       {
         image_index    = local.core.image_index,
         input_locale   = local.core.input_locale,
