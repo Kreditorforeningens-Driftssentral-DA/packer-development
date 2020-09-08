@@ -1,8 +1,9 @@
 # Packer
 packer_cache/
+builds/
 
 # Vagrant
-*.vagrant/
+.vagrant/
 
 *.box
 

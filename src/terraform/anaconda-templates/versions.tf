@@ -3,7 +3,7 @@ terraform {
   required_version = "~> 0.13"
 
   backend "local" {
-    path = "./src/terraform/w2k19-templates/terraform.tfstate"
+    path = "./src/terraform/anaconda-templates/terraform.tfstate"
   }
 
   required_providers {

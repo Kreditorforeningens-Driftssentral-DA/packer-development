@@ -1,7 +1,15 @@
 locals {
-  # Variables passed to virtualbox builder
+
+  # Variables shared by builders
+  iso_dl_folder = var.iso_dl_folder
+  iso_chksum    = var.iso_chksum
+  iso_urls      = var.iso_urls
+  output_folder = var.output_folder
+  
+  # Variables used by virtualbox builder
   virtualbox = {
     os_type     = "Ubuntu_64" #var.os_definition[virtualbox]
+    version     = var.version
     admin_user  = var.admin_password
     admin_pass  = var.admin_password
     vm_name     = var.vm_name
@@ -12,22 +20,13 @@ locals {
 }
 
 # ==========================================================
-#  Required variables
+#  Required variables (no defaults)
 # ==========================================================
 #  None
 
 # ==========================================================
 #  Optional variables
 # ==========================================================
-
-#variable "os_definition" {
-#  type        = map(string)
-#  description = "OS-type, by builder"
-#  default = {
-#    virtualbox = "Ubuntu_64"
-#    vsphere    = "ubuntu64Guest" # https://code.vmware.com/apis/358/vsphere/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
-#  }
-#}
 
 variable "vm_name" {
   type        = string
@@ -89,5 +88,11 @@ variable "iso_dl_folder" {
 variable "output_folder" {
   type        = string
   description = "(Optional) Location to save outputfiles"
-  default     = "./output/ubuntu"
+  default     = "./builds/base/ubuntu"
+}
+
+variable "version" {
+  type        = string
+  description = "(Optional) Version to tag resulting output"
+  default     = "development"
 }

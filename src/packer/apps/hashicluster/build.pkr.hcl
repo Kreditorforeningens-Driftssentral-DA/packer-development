@@ -3,13 +3,30 @@ build {
   name    = "hashicluster"
   sources = ["source.virtualbox-ovf.focal-hashicluster"]
 
-
   provisioner "shell" {
     name = "update"
     environment_vars = ["DEBIAN_FRONTEND=noninteractive"]
     inline = [
       "sudo apt-get update",
       "sudo apt-get -y -qq upgrade",
+    ]
+  }
+
+  provisioner "shell" {
+    name = "repo"
+    environment_vars = ["DEBIAN_FRONTEND=noninteractive"]
+    inline = [
+      "curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -",
+      "sudo apt-add-repository \"deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main\"",
+      "sudo apt-get update",
+    ]
+  }
+
+  provisioner "shell" {
+    name = "install"
+    environment_vars = ["DEBIAN_FRONTEND=noninteractive"]
+    inline = [
+      "sudo apt-get -y -qq install consul nomad vault",
     ]
   }
 

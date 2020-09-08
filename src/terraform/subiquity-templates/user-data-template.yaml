@@ -18,11 +18,11 @@ autoinstall:
     swap:
       size: 0
   user-data:
-    locale: nb-NO
-    timezone: Europe/Oslo
+    locale: ${input_locale}
+    timezone: ${timezone}
     users:
-      - name: packer
-        passwd: $6$packer$boWUDPn2ItbIVp75vZkcB9enktYcH/yND03ZqeO.xN1ydPY2A8ZRsbTDbbiRlToGQ97O4.AM3Tdw9FQoPk41k.
+      - name: ${local_username}
+        passwd: ${local_password}
         groups: ["adm", "cdrom", "sudo"]
         sudo: ALL=(ALL) NOPASSWD:ALL
         shell: /bin/bash
