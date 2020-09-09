@@ -1,6 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Import configuration
 require 'yaml'
 current_dir    = File.dirname(File.expand_path(__FILE__))
 vagrant_config = YAML.load_file("#{current_dir}/config.yaml")
@@ -14,8 +15,5 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder '.', '/vagrant', disabled: true
 
   # Expose Ports
-  #config.vm.network "forwarded_port", guest: 8500, host: 8500
-  #config.vm.network "forwarded_port", guest: 8200, host: 8200
-  #config.vm.network "forwarded_port", guest: 4646, host: 4646
   config.vm.network "forwarded_port", guest: 8080, host: 8080
 end

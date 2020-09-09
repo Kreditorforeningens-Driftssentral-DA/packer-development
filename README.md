@@ -8,6 +8,9 @@ This repository contains only public information
 * Packer/Virtualbox: Building HashiCluster box (consul, vault & nomad)
 * Vagrant/Virtualbox: Testing boxes created in this repo
 
+NOTE:
+All applications should be ran from the root-folder of the repository (except './tests')
+
 ## Required software
 * HashiCorp Terraform
 * HashiCorp Packer

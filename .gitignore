@@ -2,6 +2,8 @@
 packer_cache/
 builds/
 
+*.pkrvars.hcl
+
 # Vagrant
 .vagrant/
 

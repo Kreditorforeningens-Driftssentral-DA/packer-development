@@ -2,15 +2,16 @@
 #  UBUNTU FOCAL (20.04) -- Subiquity w/BIOS (EFI requires iso)
 # ===================================================================
 
-source "virtualbox-iso" "focal-bios" {
+source "virtualbox-iso" "bios" {
   headless         = true
   keep_registered  = false
   skip_export      = false
-  output_directory = local.output_folder
 
   # EXPORT OPTIONS
-  format      = "ova"
-  export_opts = [
+  output_directory = local.output_folder
+  output_filename  = local.output_filename
+  format           = "ova"
+  export_opts      = [
     "--manifest",
     "--vsys", "0",
     "--description", "Ubuntu 20.04 base-image",
@@ -23,10 +24,10 @@ source "virtualbox-iso" "focal-bios" {
   disk_size            = local.virtualbox.disk_size
   hard_drive_interface = "sata"
   vboxmanage           = [
-    ["modifyvm", "{{ .Name }}", "--firmware", "BIOS"],
-    ["modifyvm", "{{.Name}}",   "--vram",     "48"],
-    ["modifyvm", "{{ .Name }}", "--cpus",     local.virtualbox.cpus],
-    ["modifyvm", "{{ .Name }}", "--memory",   local.virtualbox.memory],
+    ["modifyvm", "{{.Name}}", "--firmware", "BIOS"],
+    ["modifyvm", "{{.Name}}", "--vram",     "48"],
+    ["modifyvm", "{{.Name}}", "--cpus",     local.virtualbox.cpus],
+    ["modifyvm", "{{.Name}}", "--memory",   local.virtualbox.memory],
   ]
 
   # SOURCE SETTINGS
@@ -49,8 +50,8 @@ source "virtualbox-iso" "focal-bios" {
 
   # DEPLOYMENT SETTINGS
   http_directory         = "./src/_http/subiquity/ubuntu-focal"
-  shutdown_command = "echo '${local.virtualbox.admin_pass}' | sudo shutdown -P now"
-  shutdown_timeout = "30m"
+  shutdown_command       = "echo '${local.virtualbox.admin_pass}' | sudo shutdown -P now"
+  shutdown_timeout       = "30m"
   boot_wait              = "5s"
   boot_keygroup_interval = "500ms"
   boot_command           = [

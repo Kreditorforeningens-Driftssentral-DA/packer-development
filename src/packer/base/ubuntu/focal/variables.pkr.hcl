@@ -1,14 +1,15 @@
 locals {
 
   # Variables shared by builders
-  iso_dl_folder = var.iso_dl_folder
-  iso_chksum    = var.iso_chksum
-  iso_urls      = var.iso_urls
-  output_folder = var.output_folder
+  iso_dl_folder   = var.iso_dl_folder
+  iso_chksum      = var.iso_chksum
+  iso_urls        = var.iso_urls
+  output_folder   = var.output_folder
+  output_filename = var.output_filename
   
   # Variables used by virtualbox builder
   virtualbox = {
-    os_type     = "Ubuntu_64" #var.os_definition[virtualbox]
+    os_type     = var.os_type_virtualbox
     version     = var.version
     admin_user  = var.admin_password
     admin_pass  = var.admin_password
@@ -20,13 +21,14 @@ locals {
 }
 
 # ==========================================================
-#  Required variables (no defaults)
-# ==========================================================
-#  None
-
-# ==========================================================
 #  Optional variables
 # ==========================================================
+
+variable "os_type_virtualbox" {
+  type        = string
+  description = "(Optional) OS-type used by virtualbox"
+  default     = "Ubuntu_64"
+}
 
 variable "vm_name" {
   type        = string
@@ -87,8 +89,14 @@ variable "iso_dl_folder" {
 
 variable "output_folder" {
   type        = string
-  description = "(Optional) Location to save outputfiles"
-  default     = "./builds/base/ubuntu"
+  description = "(Optional)  This is the path to the directory where the resulting virtual machine will be created."
+  default     = "./builds/packer"
+}
+
+variable "output_filename" {
+  type        = string
+  description = "(Optional) This is the base name of the file (excluding the file extension)"
+  default     = "ubuntu_focal"
 }
 
 variable "version" {
@@ -96,3 +104,16 @@ variable "version" {
   description = "(Optional) Version to tag resulting output"
   default     = "development"
 }
+
+variable "vagrant_cloud_access_token" {
+  type        = string
+  description = "(Optional) Vagrant Cloud access token, for uploading boxes"
+  default     = ""
+}
+
+variable "vagrant_cloud_box_version" {
+  type        = string
+  description = "(Optional) Vagrant Cloud box-version"
+  default     = "0.0.0"
+}
+

@@ -1,7 +1,7 @@
 # Configuration is imported to Vagrantfile (vagrant_config)
 ---
 root_folder: ../../../builds/vagrant
-box_name: virtualbox_ubuntu_focal-bios.box
+box_name: packer_ubuntu_focal.box
 ssh_username: packer
 ssh_password: packer
 ...
