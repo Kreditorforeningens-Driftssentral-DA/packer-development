@@ -1,7 +1,7 @@
 # Configuration is imported to Vagrantfile (vagrant_config)
 ---
-root_folder: ../../../builds/vagrant
-box_name: virtualbox-hashicluster.box
+root_folder: ../../../builds/packer
+box_name: hashicluster_virtualbox.box
 ssh_username: packer
 ssh_password: packer
 ...

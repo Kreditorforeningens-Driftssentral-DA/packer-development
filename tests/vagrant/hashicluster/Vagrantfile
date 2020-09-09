@@ -13,8 +13,9 @@ Vagrant.configure("2") do |config|
   # Do not map any folders
   config.vm.synced_folder '.', '/vagrant', disabled: true
 
-  # Expose Consul, Vault & Nomad
+  # Expose Consul, Vault & Nomad (& connect)
   config.vm.network "forwarded_port", guest: 8500, host: 8500
   config.vm.network "forwarded_port", guest: 8200, host: 8200
   config.vm.network "forwarded_port", guest: 4646, host: 4646
+  config.vm.network "forwarded_port", guest: 9002, host: 9002
 end
